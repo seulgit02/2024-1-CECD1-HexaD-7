@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import NotationBox from "../components/NotationBox";
 import NavBarComponent from "../components/NavBar";
 import logo from "../images/logo.png";
 import BackBtn from "../components/Backbtn";
+import notationList from "../mockdata/notation_list.json";
 function RegisterNotation() {
-  const navigate = useNavigate();
-
   return (
     <Frame>
       <NavBarComponent />
@@ -30,7 +29,7 @@ function RegisterNotation() {
             <div class="flex flex-col justify-center">
               <div class="h-[30vw] overflow-y-auto">
                 <div class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white my-2">
-                  <div class="w-[100%] flex justify-between p-1">
+                  <div class="w-[100%] flex justify-between p-1  h-[2vw]">
                     <b>~에 관하여</b>
                     <b class="text-right">x</b>
                   </div>
@@ -45,57 +44,9 @@ function RegisterNotation() {
                     </div>
                   </div>
                 </div>
-
-                <div class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white my-2">
-                  <div class="w-[100%] flex justify-between p-1 h-[2vw]">
-                    <b>~에 관하여</b>
-                    <b class="text-right">x</b>
-                  </div>
-                  <div class="pl-1">
-                    <p>~에 대하여 등 비슷한 의미를 가진 접속 부사는...</p>
-                    <hr class="mt-2 mb-[0.1vw]" />
-                    <div class="flex items-center justify-between p-1">
-                      <div class="text-blue-500 bg-blue-100 px-2 rounded font-bold">
-                        접속부사
-                      </div>
-                      <p>수정하기</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white my-2">
-                  <div class="w-[100%] flex justify-between p-1">
-                    <b>~에 관하여</b>
-                    <b class="text-right">x</b>
-                  </div>
-                  <div class="pl-1">
-                    <p>~에 대하여 등 비슷한 의미를 가진 접속 부사는...</p>
-                    <hr class="mt-2 mb-[0.1vw]" />
-                    <div class="flex items-center justify-between p-1">
-                      <div class="text-blue-500 bg-blue-100 px-2 rounded font-bold">
-                        접속부사
-                      </div>
-                      <p>수정하기</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white">
-                  <div class="w-[100%] flex justify-between p-1">
-                    <b>~에 관하여</b>
-                    <b class="text-right">x</b>
-                  </div>
-                  <div class="pl-1">
-                    <p>~에 대하여 등 비슷한 의미를 가진 접속 부사는...</p>
-                    <hr class="mt-2 mb-[0.1vw]" />
-                    <div class="flex items-center justify-between p-1">
-                      <div class="text-blue-500 bg-blue-100 px-2 rounded font-bold">
-                        접속부사
-                      </div>
-                      <p>수정하기</p>
-                    </div>
-                  </div>
-                </div>
+                {notationList.map((item, index) => (
+                  <NotationBox Notation={item} key={index} />
+                ))}
               </div>
               <div class="h-[3vw]"></div>
             </div>
@@ -110,11 +61,11 @@ function RegisterNotation() {
                 <b>설명 등록</b>
                 <textarea class="bg-gray-200 rounded h-[7vw] p-[1vw]" />
               </form>
-              <div class="mt-[3vw] flex flex-row">
-                <button class="w-[100%] h-[3.3vw] p-[1vw] bg-[#0089CF] text-white font-bold">
+              <div class="mt-[3vw] flex flex-row text-[1.2vw] textd-center">
+                <button class="w-[100%] h-[3.3vw] p-[0.8vw] bg-[#0089CF] text-white font-bold">
                   등록하기
                 </button>
-                <button class="w-[100%] h-[3.3vw] p-[1vw] bg-[#D9D9D9] text-white font-bold">
+                <button class="w-[100%] h-[3.3vw] p-[0.8vw] bg-[#D9D9D9] text-white font-bold">
                   취소하기
                 </button>
               </div>
