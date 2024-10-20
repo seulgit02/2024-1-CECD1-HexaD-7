@@ -4,7 +4,7 @@ import styled from "styled-components";
 import NavBarComponent from "../components/NavBar";
 import logo from "../images/logo.png";
 import spellCheckData from "../mockdata/spell_ckeck.json";
-
+import BackBtn from "../components/Backbtn";
 function SpellCheck() {
   const navigate = useNavigate();
 
@@ -41,7 +41,10 @@ function SpellCheck() {
     <Frame>
       <NavBarComponent />
       <MainBox>
-        <GuideBanner>사용자 가이드</GuideBanner>
+        <div class="flex justify-between">
+          <BackBtn prevPath="/feedback" />
+          <GuideBanner>사용자 가이드</GuideBanner>
+        </div>
         <TitleBox>
           <img src={logo} alt="Main Logo" style={{ width: "15%" }} />
         </TitleBox>
