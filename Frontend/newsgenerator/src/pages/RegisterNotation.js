@@ -5,7 +5,16 @@ import NavBarComponent from "../components/NavBar";
 import logo from "../images/logo.png";
 import BackBtn from "../components/Backbtn";
 import notationList from "../mockdata/notation_list.json";
+import NotationDetailBox from "../components/NotationDetailBox";
 function RegisterNotation() {
+  const [isClickedDetail, setIsClickedDetail] = useState(false);
+  const [detailNotation, setDetailNotation] = useState({});
+  // 상태 변경 로그
+  useEffect(() => {
+    console.log("isClickedDetail:", isClickedDetail);
+    console.log("detailNotation:", detailNotation);
+  }, [isClickedDetail, detailNotation]);
+
   return (
     <Frame>
       <NavBarComponent />
@@ -28,24 +37,17 @@ function RegisterNotation() {
           <div class="flex flex-row justify-center gap-16 text-[1vw] h-[32vw]">
             <div class="flex flex-col justify-center">
               <div class="h-[30vw] overflow-y-auto">
-                <div class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white my-2">
-                  <div class="w-[100%] flex justify-between p-1  h-[2vw]">
-                    <b>~에 관하여</b>
-                    <b class="text-right">x</b>
-                  </div>
-                  <div class="pl-1">
-                    <p>~에 대하여 등 비슷한 의미를 가진 접속 부사는...</p>
-                    <hr class="mt-2 mb-[0.1vw]" />
-                    <div class="flex items-center justify-between p-1">
-                      <div class="text-blue-500 bg-blue-100 px-2 rounded font-bold">
-                        접속부사
-                      </div>
-                      <p>수정하기</p>
-                    </div>
-                  </div>
-                </div>
                 {notationList.map((item, index) => (
-                  <NotationBox Notation={item} key={index} />
+                  <NotationBox
+                    Notation={item}
+                    key={index}
+                    onClick={() => {
+                      setIsClickedDetail(true);
+                      setDetailNotation(item);
+                      console.log("isClickedDetail:", isClickedDetail);
+                      console.log("detailNotation: ", detailNotation);
+                    }}
+                  />
                 ))}
               </div>
               <div class="h-[3vw]"></div>
@@ -73,6 +75,7 @@ function RegisterNotation() {
           </div>
         </div>
       </MainBox>
+      {isClickedDetail && <NotationDetailBox Notation={detailNotation} />}
     </Frame>
   );
 }

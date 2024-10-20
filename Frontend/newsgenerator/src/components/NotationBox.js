@@ -1,8 +1,11 @@
 import React from "react";
 
-const NotationBox = ({ Notation }) => {
+const NotationBox = ({ Notation, onClick }) => {
   return (
-    <div class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white my-2">
+    <div
+      onClick={onClick}
+      class="rounded cursor-pointer w-[26vw] h-[7vw] border-[0.1vw] border-gray-300 px-1 pr-2 bg-white my-2"
+    >
       <div class="w-[100%] flex justify-between p-1  h-[2vw]">
         <b>{Notation.output_text}</b>
         <b class="text-right">x</b>
